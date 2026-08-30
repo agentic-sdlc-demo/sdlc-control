@@ -22,7 +22,7 @@ stage reads. Git history is the audit trail: who requested what, who approved it
 | `hooks/` | Deterministic guardrails (e.g. `deploy-gate.sh` blocks ungated prod deploys) |
 | `evals/` | Golden tasks that regression-test the governance config itself |
 | `monitoring/` | Western Electric detection (`detect.py`) and runbooks — Stage 6 |
-| `workflows/` | Reusable GitHub Actions (Claude PR review, scheduled security scan) |
+| `.github/workflows/` | Reusable GitHub Actions (`claude-review.yml`, `security-scan.yml`) callable from `app-source` via `uses:` — GitHub requires reusable workflows to live under `.github/workflows/` to be called cross-repo |
 | `metrics/` | Leading/lagging indicator and DORA collection |
 
 ## How app-source consumes this repo
@@ -31,3 +31,6 @@ stage reads. Git history is the audit trail: who requested what, who approved it
 into the app repo at the ref pinned in `app-source/GOVERNANCE_REF`. CI fails on drift.
 Changes to governance land here via PR — and any PR touching `skills/` must pass
 `evals/run-evals.sh` before merge.
+
+`app-source/.github/workflows/claude-review.yml` and `security-scan.yml` call the reusable
+workflows in this repo directly (`uses: agentic-sdlc-demo/sdlc-control/.github/workflows/...@main`).
