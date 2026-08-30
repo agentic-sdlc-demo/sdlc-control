@@ -1,0 +1,35 @@
+# Reusable workflow: headless Claude reviews a PR for bugs, security, and
+# compliance against the org skills. Called from app-source/.github/workflows/.
+name: claude-review
+on:
+  workflow_call:
+    secrets:
+      ANTHROPIC_API_KEY:
+        required: true
+      SDLC_GITHUB_TOKEN:
+        required: true
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Sync governance (skills as review criteria)
+        run: bash scripts/sync-governance.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.SDLC_GITHUB_TOKEN }}
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.SDLC_GITHUB_TOKEN }}
+          prompt: |
+            Review this pull request for correctness bugs, security issues, and
+            compliance with the policies in .claude/skills/ (api-standards,
+            security-baseline, ui-brand). Post concise inline comments for real
+            findings only; do not comment on style. Finish with a short summary
+            comment listing any policy violations by skill name.

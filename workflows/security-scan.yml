@@ -1,0 +1,35 @@
+# Reusable workflow: scheduled security scan. Findings are triaged into an
+# issue; dismissals require a recorded reason (close comment) so oversight
+# stays auditable.
+name: security-scan
+on:
+  workflow_call:
+    secrets:
+      ANTHROPIC_API_KEY:
+        required: true
+      SDLC_GITHUB_TOKEN:
+        required: true
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Dependency audit
+        run: npm audit --audit-level=high --json > audit.json || true
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.SDLC_GITHUB_TOKEN }}
+          prompt: |
+            Read audit.json and scan the repository for violations of
+            .claude/skills/security-baseline. If there are real findings, open
+            (or update) a GitHub issue titled "Security scan findings" listing
+            each finding with severity and file reference. If an existing
+            finding is a false positive, note the reason instead of deleting it.
