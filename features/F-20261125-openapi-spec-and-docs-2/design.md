@@ -3,11 +3,13 @@ control_id: F-20261125-openapi-spec-and-docs-2
 kind: design
 team: taskslist
 drafted_by: shaheenks@shaheenks.altostrat.com
-published: '2026-11-25T18:27:12Z'
+published: '2026-11-25T18:44:35Z'
 previous:
   path: features/F-20261125-openapi-spec-and-docs-2/feature.md
   commit: 8688a611d56c8225243d772a1e7a2d9ea42cf227
   approved: true
+jira:
+- TAS-3
 ---
 
 # TAS-OPENAPI: OpenAPI Specification and Interactive API Documentation
