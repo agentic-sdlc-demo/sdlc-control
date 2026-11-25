@@ -1,0 +1,14 @@
+writes:
+- at: '2026-11-25T18:24:09Z'
+  by: shaheenks@shaheenks.altostrat.com
+  action: create_feature
+  system: jira
+  artifact: features/F-20261125-openapi-spec-and-docs-2-2/feature.md
+  artifact_commit: c3aea0bc173473ef13d6df1436e10b9529648e9f
+  approved_by: shaheenks
+  results:
+    project: TAS
+    site: https://shaheenks.atlassian.net
+    stories: []
+    feature: TAS-2
+  error: downstream_invalid
