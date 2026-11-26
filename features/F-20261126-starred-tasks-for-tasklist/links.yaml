@@ -33,3 +33,13 @@ writes:
   results:
     branch: feature/F-20261126-starred-tasks-for-tasklist
     agentic-sdlc-demo/app-source: created
+- at: '2026-11-26T13:15:59Z'
+  by: shaheenks@shaheenks.altostrat.com
+  action: link_design
+  system: jira
+  artifact: features/F-20261126-starred-tasks-for-tasklist/design.md
+  artifact_commit: 2824fdd9df41d450be7149a6eff47f115f539450
+  approved_by: shaheenks
+  results:
+    feature: TAS-11
+    url: https://github.com/agentic-sdlc-demo/sdlc-control/pull/12
