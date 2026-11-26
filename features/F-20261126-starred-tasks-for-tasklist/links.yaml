@@ -1,0 +1,28 @@
+writes:
+- at: '2026-11-26T13:07:43Z'
+  by: shaheenks@shaheenks.altostrat.com
+  action: create_feature
+  system: jira
+  artifact: features/F-20261126-starred-tasks-for-tasklist/feature.md
+  artifact_commit: 33132bbba460175d382c8f024f179aeb390d09f7
+  approved_by: shaheenks@shaheenks.altostrat.com
+  results:
+    project: TAS
+    site: https://shaheenks.atlassian.net
+    stories:
+    - TAS-12
+    - TAS-13
+    - TAS-14
+    - TAS-15
+    - TAS-16
+    reused: []
+    epic_created: true
+    epic: TAS-10
+    feature: TAS-11
+    estimate: S
+    story_points:
+      TAS-12: 2
+      TAS-13: 3
+      TAS-14: 3
+      TAS-15: 3
+      TAS-16: 3
