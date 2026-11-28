@@ -43,3 +43,13 @@ writes:
   results:
     feature: TAS-11
     url: https://github.com/agentic-sdlc-demo/sdlc-control/pull/12
+- at: '2026-11-28T16:16:41Z'
+  by: system:sdlc-bot
+  action: plan_pull_request
+  system: control
+  run_id: sim-94cf999b70357efde53694b83cfa19cd:ci_plan
+  results:
+    repo: agentic-sdlc-demo/app-source
+    pull_request: 13
+    url: https://github.com/agentic-sdlc-demo/sdlc-control/pull/13
+    branch: sdlc/F-20261126-starred-tasks-for-tasklist/plan-app-source
